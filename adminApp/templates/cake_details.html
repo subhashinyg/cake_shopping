@@ -1,0 +1,114 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        {% include 'common/leftmenu.html' %}
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                {% include 'common/top_bar.html' %}
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Cake Details</h1>
+
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Cake Flavour</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Flavour</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for flavour in cake_flavour %}
+                                            <tr>
+                                                <td>{{ flavour.name }}</td>
+                                                <td>
+                                                    <a href="/cake-details/{{ cake.id }}" class="btn btn-sm btn-primary">View</a>
+                                                    <button type="button" class="btn btn-sm btn-info">Edit</button>
+                                                    <a href="/delete-cake/{{ cake.id }}" class="btn btn-sm btn-danger" onclick="return confirm('Sure you want to delete?')">Delete</a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Cake Images</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for img in cake_images %}
+                                        <tr>
+                                            <td>{{ img.image }}</td>
+                                            <td>
+                                                <a href="/cake-details/{{ cake.id }}" class="btn btn-sm btn-primary">View</a>
+                                                <button type="button" class="btn btn-sm btn-info">Edit</button>
+                                                <a href="/delete-cake/{{ cake.id }}" class="btn btn-sm btn-danger" onclick="return confirm('Sure you want to delete?')">Delete</a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            {% include 'common/footer.html' %}
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+
+{% endblock %}

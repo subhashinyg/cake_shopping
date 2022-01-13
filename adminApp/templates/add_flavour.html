@@ -1,0 +1,70 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        {% include 'common/leftmenu.html' %}
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                {% include 'common/top_bar.html' %}
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Add Cake Flavour</h1>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                             <form action="/add-flavour" method="post">
+                                 {% csrf_token %}
+                                 <div class="row">
+                                     <div class="col-sm-6">
+                                         <div class="form-group">
+                                            <label for="name">Cake</label>
+                                            <select class="form-control" name="cake_id" required>
+                                                <option selected disabled>-Select cake-</option>
+                                                {% for cake in cakes %}
+                                                <option value="{{ cake.id }}">{{ cake.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                          </div>
+                                     </div>
+                                     <div class="col-sm-6">
+                                         <div class="form-group">
+                                            <label for="name">Cake Flavour</label>
+                                            <input type="text" name="flavour" class="form-control" placeholder="Enter cake flavour" id="name" required>
+                                          </div>
+                                     </div>
+                                 </div>
+                                 <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+            {% include 'common/footer.html' %}
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+{% endblock %}
